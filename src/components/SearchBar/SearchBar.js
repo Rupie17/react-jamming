@@ -5,10 +5,12 @@ import "./SearchBar.css";
 const SearchBar = (props) => {
   const [term, setTerm] = useState("");
 
-  const handleTermChange = useCallback((event) => {
-    setTerm(event.target.value);
+  // handles the user typing
+  const handleTermChange = useCallback((e) => {
+    setTerm(e.target.value);
   }, []);
-
+  // use callback caches between renders, giving back same info unless props change.
+  // handles the button click.
   const search = useCallback(() => {
     props.onSearch(term);
   }, [props.onSearch, term]);
